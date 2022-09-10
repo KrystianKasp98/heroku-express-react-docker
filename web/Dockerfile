@@ -1,5 +1,5 @@
 #Start from the pre-existing official Node image
-FROM node:14.9
+FROM node:13.12.0
 #Specifies directory for all subsequent actions in image filesystem (never host's filesystem)
 #"/usr/local/bin/" is what Heroku takes as the "root" folder. Files MUST be added here or they cannot be found!
 WORKDIR /usr/local/bin/web

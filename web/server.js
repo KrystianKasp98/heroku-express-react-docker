@@ -28,15 +28,15 @@ if (process.env.NODE_ENV != "production") {
 } else if (process.env.NODE_ENV == "production") {
   app.get("/server/", async function (req, res) {
     console.log("Main page loading...");
-    res.sendFile(__dirname + "/client/build/index.html");
+    res.sendFile(__dirname + "/client/public/index.html");
   });
 
-  app.use(express.static(path.join(__dirname, "client/build")));
+  app.use(express.static(path.join(__dirname, "client/public")));
   //Put this last among all routes. Otherwise, it will return HTML to all fetch requests and trip up CORS. They interrupt each other
   // For any request that doesn't match, this sends the index.html file from the client. This is used for all of our React code.
   //Eliminates need to set redirect in package.json at start script with concurrently
   app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname + "/client/build/index.html"));
+    res.sendFile(path.join(__dirname + "/client/public/index.html"));
   });
 }
 //App will run on process.env.PORT by default. Must specify or Heroku uses its default port

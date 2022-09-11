@@ -5,7 +5,7 @@ module.exports = (app) => {
   app.use(
     "/server/*",
     createProxyMiddleware({
-      target: `http://localhost:5000`,
+      target: `http://localhost:443`,
       changeOrigin: true,
     })
   );
